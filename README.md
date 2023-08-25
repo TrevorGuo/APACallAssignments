@@ -2,7 +2,7 @@
 Hello! This is a script for [Asian Pacific American Health Care(APAHC)](https://www.apahcare.com/) at UCLA. This script matches the club's Customer Relations(CR) committee with the clients that are served at APA Health Fairs for follow up calls. The CR members and clients are matched based on the languages they speak so that these calls go smoothly. 
 
 ## How to Run the Script
-If you want to run the script for call assignments, please follow the instructions below.
+If you want to run the script for call assignments, follow the link to the [google colab](https://colab.research.google.com/drive/1hcid6-ct_Tm448c1Czqiftb48dYfkurI?usp=sharing). 
 
 ### Prerequisites
 1. You need to install [Python 3](https://www.python.org/downloads/) or above on your system. 
