@@ -13,10 +13,12 @@ class PreferenceMaker:
             'Very Well' : 0
         }
         self.clientLanguages = set()
+        self.fillClientLanguages()
     
     def fillClientLanguages(self):
         for client in self.clients:
-            self.clientLanguages.add(client.languages)
+            for language in client.languages:
+                self.clientLanguages.add(language)
 
     def getMemberPreferences(self):
         memberPreferences = {}
@@ -64,9 +66,30 @@ class PreferenceMaker:
                 score = score + englishScore
         return score
     
+    def getMemberCaps(self):
+        memberCaps = {}
 
+        num_members = len(self.members)
+        num_clients = len(self.clients)
 
-# preferenceMaker = PreferenceMaker()
-# print(preferenceMaker.getClientPreferences())
-# print()
-# print(preferenceMaker.getMemberPreferences())
+        num_calls = num_clients // num_members
+        num_extra = num_clients % num_members
+
+        memberImpact = []
+        for member in self.members:
+            score = 0
+            for language in member.languages:
+                if language in self.clientLanguages:
+                    score = score + 1
+            memberImpact.append((member.name , score))
+
+        memberImpact.sort(key=lambda a:a[1], reverse=True)
+
+        for member in memberImpact:
+            if num_extra > 0:
+                memberCaps[member[0]] = num_calls + 1
+                num_extra = num_extra - 1
+            else:
+                memberCaps[member[0]] = num_calls
+
+        return memberCaps

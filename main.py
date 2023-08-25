@@ -5,20 +5,7 @@ def main():
     pm = preferences.PreferenceMaker()
     client_prefs = pm.getClientPreferences()
     member_prefs = pm.getMemberPreferences()
-    member_caps = {}
-
-    num_clients = len(client_prefs)
-    num_members = len(member_prefs)
-
-    num_calls = num_clients // num_members
-    num_extra = num_clients % num_members
-
-    for key in member_prefs:
-        if (num_extra == 0):
-            member_caps[key] = num_calls
-        else:
-            member_caps[key] = num_calls + 1
-            num_extra = num_extra - 1
+    member_caps = pm.getMemberCaps()
 
     game = HospitalResident.create_from_dictionaries(
         client_prefs, member_prefs, member_caps

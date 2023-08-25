@@ -1,10 +1,12 @@
 import pandas as pd
 import re
 import classes
+import os
 
 class DataFetcher:
     def __init__(self):
-        self.df = pd.read_csv('https://docs.google.com/spreadsheets/d/e/2PACX-1vTK8ypQiaMZqtmJ23Joo5txhD9aKMJmPTqMTZc6H34SSYUoSk_KOxYUlMoXzdW-ZC1aumE8ZpmmfwKD/pub?output=csv')
+        print(os.getcwd())
+        # self.df = pd.read_csv('./Desktop/HealthFairData.csv')
 
     def getMembersList(self):
         df_members = self.df[['CR', 'Language Skills']].dropna()
